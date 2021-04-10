@@ -72,7 +72,8 @@ class CastController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = DB::table('casts')->where('id', $id)->first();
+        return view('cast.edit', compact('post'));
     }
 
     /**
@@ -84,7 +85,14 @@ class CastController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $query = DB::table('casts') 
+                    ->where('id', $id)
+                    ->update([
+                        'name' => $request['name'],
+                        'age' => $request['age'],
+                        'bio' => $request['bio']
+                    ]);
+        return redirect('/cast')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -95,6 +103,7 @@ class CastController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $query = DB::table('casts')->where('id', $id)->delete();
+        return redirect('/cast')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -9,5 +9,6 @@
         <h4>{{$post->name}}</h4>
         <p>{{$post->age}}</p>
         <p>{{$post->bio}}</p>
+        <a href="/cast/{{$post->id}}/edit" class="btn btn-default">Edit</a>
     </div>
 @endsection

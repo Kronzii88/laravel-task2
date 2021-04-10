@@ -32,8 +32,13 @@
             <td>{{$post->name}}</td>
             <td>{{$post->age}}</td>
             <td>{{$post->bio}}</td>
-            <td>
+            <td class="d-flex">
               <a href="/cast/{{$post->id}}" class="btn btn-info btn-sm mr-1">Show</a>
+              <form action="/cast/{{$post->id}}" method="POST">
+                @csrf
+                @method('delete')
+                <input type="submit" value="delete" class="btn btn-danger btn-sm">
+              </form>
             </td>
           </tr>
           @endforeach
