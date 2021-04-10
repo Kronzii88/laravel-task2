@@ -53,15 +53,6 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{url('/data-tables')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Data Tables
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-              </li>   
             </ul>
           </li>
         </ul>

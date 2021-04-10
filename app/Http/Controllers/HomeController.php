@@ -12,10 +12,7 @@ class HomeController extends Controller
     }
     public function table()
     {
-        return view('table.index');
+        return view('cast.index');
     }
-    public function tables()
-    {
-        return view('table.tables');
-    }
+
 }

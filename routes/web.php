@@ -15,6 +15,11 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@index');
-Route::get('/table', 'HomeController@table');
-Route::get('/data-tables', 'HomeController@tables');
+
+Route::get('/', 'HomeController@home');
+
+//cast
+Route::get('/cast', 'CastController@index');
+Route::get('/cast/create', 'CastController@create');
+Route::post('/cast', 'CastController@store');
+Route::get('/cast/{id}', 'CastController@show');

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Masuk ke <a href="{{url('/table')}}">Tabel</a></h1>
+        <h1>Masuk ke <a href="{{url('/cast')}}">Tabel</a></h1>
     </div>
 </body>
 </html>
