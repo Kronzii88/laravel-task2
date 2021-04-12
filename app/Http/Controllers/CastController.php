@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Cast;
 
 class CastController extends Controller
 {
@@ -14,8 +15,13 @@ class CastController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('casts')->get();
-        return view('cast/index', compact('posts'));
+        // query builder
+        // $posts = DB::table('casts')->get();
+
+        //eloquent ORM
+        $casts = Cast::all();
+
+        return view('cast/index', compact('casts'));
     }
 
     /**
@@ -43,7 +49,21 @@ class CastController extends Controller
             "bio" => 'required'
         ]);
 
-        $query = DB::table('casts')->insert([
+        //query builder
+        // $query = DB::table('casts')->insert([
+        //     "name" => $request["name"],
+        //     "age" => $request["age"],
+        //     "bio" => $request["bio"]
+        // ]);
+
+        //eloquent ORM
+        // $cast = new Cast;
+        // $cast->name = $request["name"];
+        // $cast->age = $request["age"];
+        // $cast->bio = $request["bio"];
+        // $cast->save();
+
+        $cast = Cast::create([
             "name" => $request["name"],
             "age" => $request["age"],
             "bio" => $request["bio"]
@@ -60,8 +80,13 @@ class CastController extends Controller
      */
     public function show($id)
     {
-        $post = DB::table('casts')->where('id', $id)->first();
-        return view('cast.show', compact('post'));
+        // query builder
+        // $post = DB::table('casts')->where('id', $id)->first();
+
+        //eloquent ORM
+        $cast = Cast::find($id);
+        
+        return view('cast.show', compact('cast'));
     }
 
     /**
@@ -72,8 +97,13 @@ class CastController extends Controller
      */
     public function edit($id)
     {
-        $post = DB::table('casts')->where('id', $id)->first();
-        return view('cast.edit', compact('post'));
+        // quey builder
+        // $post = DB::table('casts')->where('id', $id)->first();
+
+        // eloquent ORM
+        $cast = Cast::find($id);
+
+        return view('cast.edit', compact('cast'));
     }
 
     /**
@@ -85,13 +115,22 @@ class CastController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $query = DB::table('casts') 
-                    ->where('id', $id)
-                    ->update([
-                        'name' => $request['name'],
-                        'age' => $request['age'],
-                        'bio' => $request['bio']
-                    ]);
+        // query builder
+        // $query = DB::table('casts') 
+        //             ->where('id', $id)
+        //             ->update([
+        //                 'name' => $request['name'],
+        //                 'age' => $request['age'],
+        //                 'bio' => $request['bio']
+        //             ]);
+
+        // eloquent ORM
+        $update = Cast::where('id', $id)->update([
+            'name' => $request['name'],
+            'age' => $request['age'],
+            'bio' => $request['bio']
+        ]);
+
         return redirect('/cast')->with('success', 'Data berhasil diubah');
     }
 
@@ -103,7 +142,12 @@ class CastController extends Controller
      */
     public function destroy($id)
     {
-        $query = DB::table('casts')->where('id', $id)->delete();
+        // query builder
+        // $query = DB::table('casts')->where('id', $id)->delete();
+
+        // eloquent ORM
+        Cast::destroy($id);
+
         return redirect('/cast')->with('success', 'Data berhasil dihapus');
     }
 }

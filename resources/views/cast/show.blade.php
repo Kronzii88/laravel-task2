@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="mt3 ml-3">
-        <h4>{{$post->name}}</h4>
-        <p>{{$post->age}}</p>
-        <p>{{$post->bio}}</p>
-        <a href="/cast/{{$post->id}}/edit" class="btn btn-default">Edit</a>
+        <h4>{{$cast->name}}</h4>
+        <p>{{$cast->age}}</p>
+        <p>{{$cast->bio}}</p>
+        <a href="/cast/{{$cast->id}}/edit" class="btn btn-default">Edit</a>
     </div>
 @endsection

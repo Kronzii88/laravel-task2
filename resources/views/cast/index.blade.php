@@ -27,14 +27,14 @@
         </tr>
         </thead>
         <tbody>
-          @foreach($posts as $key => $post)
+          @foreach($casts as $key => $cast)
           <tr>
-            <td>{{$post->name}}</td>
-            <td>{{$post->age}}</td>
-            <td>{{$post->bio}}</td>
+            <td>{{$cast->name}}</td>
+            <td>{{$cast->age}}</td>
+            <td>{{$cast->bio}}</td>
             <td class="d-flex">
-              <a href="/cast/{{$post->id}}" class="btn btn-info btn-sm mr-1">Show</a>
-              <form action="/cast/{{$post->id}}" method="POST">
+              <a href="/cast/{{$cast->id}}" class="btn btn-info btn-sm mr-1">Show</a>
+              <form action="/cast/{{$cast->id}}" method="POST">
                 @csrf
                 @method('delete')
                 <input type="submit" value="delete" class="btn btn-danger btn-sm">
